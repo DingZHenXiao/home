@@ -1,0 +1,38 @@
+<form action="/" method="post">
+  <table>
+    <!--用户名-->
+    <tr>
+      <td>
+        <span>用户名:</span>
+      </td>
+      <td>
+        <input type="text" name="username">
+      </td>
+    </tr>
+    <!--密码-->
+    <tr>
+      <td>
+        <span>密码:</span>
+      </td>
+      <td>
+        <input type="password" name="password">
+      </td>
+    </tr>
+    <!--检测信息-->
+    <tr>
+      <td colspan="2">
+        {{result}}
+      </td>
+    </tr>
+    <!--登录、注册-->
+    <tr>
+      <td>
+        <input type="submit" value="登录">
+      </td>
+      <td>
+        <input type="button" value="注册"
+               onclick="javacript:location.href='/register';">
+      </td>
+    </tr>
+  </table>
+</form>

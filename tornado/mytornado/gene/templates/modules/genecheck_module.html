@@ -1,0 +1,25 @@
+<form action="/genecheck" method="post">
+  <table>
+    <!--用户编码-->
+    <tr>
+      <td>
+        <span>用户编码:</span>
+      </td>
+      <td>
+        <input type="text" name="userId">
+      </td>
+    </tr>
+    <!--提交-->
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="提交">
+      </td>
+    </tr>
+    <!--检测信息-->
+    <tr>
+      <td colspan="2">
+        亲爱的{{name}}{{gender}},经检测,您的健康状况为:{{result}}
+      </td>
+    </tr>
+  </table>
+</form>
