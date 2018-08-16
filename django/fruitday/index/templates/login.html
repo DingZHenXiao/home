@@ -1,0 +1,75 @@
+{% load static %}
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>
+		{% block title %}
+			天天果园-登录
+		{% endblock %}
+	</title>
+	<link rel="shortcut icon" href="#" />
+	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+	{% block style %}
+	{% endblock %}
+
+	{% block js %}
+	{% endblock %}
+</head>
+<body>
+	<div id="container">
+		<h2>
+			{% block topic %}
+				会员登录
+			{% endblock %}
+		</h2>
+		<div id="content">
+			<!-- 右：登录内容 -->
+			<div id="login">
+				{% block form %}
+				<form action="/login/" method="post">
+					{% csrf_token %}
+					<!-- 循环遍历　form 对象 -->
+					{% for field in form %}
+						<div class="form-line">
+							<div>
+								{{field}}
+							</div>
+							<p>
+								{{field.label}}
+							</p>
+						</div>
+					{% endfor %}
+
+					<!-- 3、记住密码 -->
+					<div class="form-line">
+						<div>
+							<p class="anchor">
+								<a href="#">忘记密码</a>
+								<a href="#">快捷登录</a>
+							</p>
+							<p class="saved">
+								<input type="checkbox" name="isSaved">记住密码
+							</p>
+						</div>
+					</div>
+					<!-- 4、登录&会员注册 -->
+					<div class="form-line">
+						<div>
+							<a href="/register" class="goReg">会员注册</a>
+							<input type="submit" value="登录" class="btnLogin">	
+						</div>
+					</div>
+				</form>
+				{% endblock %}
+			</div>
+			<!-- 左：登录图片 -->
+			<p id="img">
+				<img src="{% static 'images/huiyuan.jpg' %}">
+				{% block anchor %}
+				<a href="/register">会员注册</a>
+				{% endblock %}
+			</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    {% if uname %}
+        <h3>欢迎:{{ uname }}</h3>
+        <h3>
+            <a href="/17_logout/">退出</a>
+        </h3>
+    {% else %}
+        <a href="/18_login/">登录</a>
+    {% endif %}
+</body>
+</html>

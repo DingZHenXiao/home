@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>正向查询</h1>
+    <h2>图书</h2>
+    <h3>{{book.title}}</h3>
+    <h3>{{book.publicate_date}}</h3>
+    <h2>出版社</h2>
+    <h3>{{publisher.name}}</h3>
+    <h3>{{publisher.address}}</h3>
+    <h3>{{publisher.city}}</h3>
+    <h3><a href="http://www.baidu.com">{{publisher.website}}</a></h3>
+    <h1>反向查询</h1>
+    <h2>出版社</h2>
+    <h3>{{pub.name}}</h3>
+    <h3><a href="http://www.baidu.com"></a>{{pub.website}}</h3>
+    <h2>图书</h2>
+    {% for book in bookList %}
+        <h3>{{book.title}}</h3>
+        <h3>{{book.publicate}}</h3>
+    {% endfor %}
+</body>
+</html>

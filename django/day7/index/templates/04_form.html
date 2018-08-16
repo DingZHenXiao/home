@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/06_form/" method="post">
+        {% csrf_token %}
+        {% comment %}
+        {% for field in form %}
+            <p>
+                {{field.label}}:{{field}}
+            </p>
+        {% endfor %}
+        {% endcomment %}
+        {% comment %}
+        {{form.as_p}}
+        {% endcomment %}
+        {% comment %}
+        <ul>
+            {{form.as_ul}}
+        </ul>
+        {% endcomment %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <p>
+            <input type="submit" value="提交">
+        </p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h3>
+        <a href="/sport/02_name">去往02_name</a>
+    </h3>
+    <h3>
+        通过别名查找02_name
+        <a href="{% url 'page2' %}">通过别名查找02_name</a>
+    </h3>
+    <h3>
+        通过别名查找03_name
+        <a href="{% url 'page3' '2020'%}">通过别名查找03_name</a>
+    </h3>
+</body>
+</html>

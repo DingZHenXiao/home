@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--ajax01/index/templates/05_checkname.html-->
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='/static/js/jquery-1.11.3.js'></script>
+    <script src='/static/js/jquery.cookie.js'></script>
+    <script src='/static/js/common.js'></script>
+    <script>
+        $(function(){
+            $('#uname').blur(function(){
+                //创建xhr
+                var xhr = getXhr();
+                //创建请求
+                xhr.open('post','/05_request/',true);
+                //设置回调函数
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4&xhr.status==200){
+                        $('#uname-show').html(xhr.responseText);
+                    };
+                };
+                //修改Content-Type消息头
+                xhr.setRequestHeader("Content-Type",
+                    'application/x-www-form-urlencoded');
+                //发送消息
+                var uname = $(this).val();
+                var csrf = $.cookie('csrftoken');
+                xhr.send('uname='+uname+'&csrfmiddlewaretoken='+csrf);
+            });
+        });
+    </script>
+</head>
+<body>
+    用户名:
+    <input type="text" id="uname">
+    <span id='uname-show'></span>
+    <form action="">
+        {% csrf_token %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--ajax01/index/static/html/01_load.html-->
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("#btnLoad").click(function(){
+                $("#show").load("/08_request/",function(responseText,statusText){
+                    var arr = JSON.parse(responseText);
+                    var html = "";
+                    $.each(arr,function(i,obj){
+                        html+="<h3>"+obj.fields.uname+"</h3>";
+                    });
+                    $("#show").html(html);
+                });
+            });
+            $("#btnGet").click(function(){
+                $.get(
+                    "/08_request/",
+                    function(data){
+                        var html = "";
+                        $.each(data,function(i,obj){
+                            // console.log(obj.pk);
+                            // console.log(obj.fields.uname);
+                            html+="<h3>"+obj.fields.uname+"</h3>";
+                        });
+                        $("#show").html(html);
+                    },
+                    "json"
+                );
+            });
+            $("#btnAjax").click(function(){
+                $.ajax(
+                    {
+                        "url":"/08_request/",
+                        "type":"get",
+                        "dataType":"json",
+                        "success": function(data){
+                            var html = "";
+                            $.each(data,function(i,obj){
+                                html+="<h3>"+obj.fields.uname+"</h3>";
+                            });
+                            $("#show").html(html);
+                        },
+                    }
+                );
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="btnLoad">使用jquery的load函数</button>
+    <button id="btnGet">使用jquery的get()</button>
+    <button id="btnAjax">使用jquery的ajax的函数</button>
+    <div id="show"></div>
+</body>
+</html>

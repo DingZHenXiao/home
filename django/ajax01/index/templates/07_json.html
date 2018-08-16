@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--ajax01/index/templates/07_json.html-->
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#" />
+    <script src='/static/js/jquery-1.11.3.js'></script>
+    <script src='/static/js/common.js'></script>
+    <script>
+        $(function(){
+            $("#btnShow").click(function(){
+                var xhr = getXhr();
+                xhr.open("get","/07_request/",true);
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4&xhr.status==200){
+                        var arr = JSON.parse(xhr.responseText);
+                        var html = "";
+                        $.each(arr,function(i,user){
+                            html+="<tr>";
+                            html+="<td>"+user.fields.uname+"</td>";
+                            html+="<td>"+user.fields.upwd+"</td>";
+                            html+="<td>"+user.fields.uage+"</td>";
+                            html+="<td>"+user.fields.uemail+"</td>";
+                            html+="</tr>";
+                        })
+                        $("tbody").html(html);
+                    }
+                }
+                xhr.send(null);
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="btnShow">加载</button>
+    <table id="tblShow" border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>年龄</th>
+                <th>邮箱</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
