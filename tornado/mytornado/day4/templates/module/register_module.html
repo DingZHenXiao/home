@@ -1,0 +1,52 @@
+  <form action='/register' method='post'
+        enctype="multipart/form-data">
+    <fieldset>
+      <legend>注册</legend>
+    <table>
+      <tr>
+        <td>
+          用户名:
+        </td>
+        <td>
+          <input type='text' name='username'>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          密&nbsp;&nbsp;码
+        </td>
+        <td>
+          <input type='password' name='pwd'>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <span>{{result}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="file" name="avatar">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <select name="city">
+            <option value="0" selected>北京</option>
+            <option value="1">上海</option>
+            <option value="2">广州</option>
+          </select>
+          <span>城市</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type='submit' value='注册'>
+        </td>
+        <td>
+          <input type='reset' value='重置'>
+        </td>
+      </tr>
+    </table>
+    </fieldset>
+  </form>
