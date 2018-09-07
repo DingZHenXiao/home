@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--ajax01/index/templates/02_params.html-->
+    <script src='/static/js/jquery-1.11.3.js'></script>
+    <script src='/static/js/common.js'></script>
+    <script>
+        function send_ajax(){
+            //创建xhr
+            var xhr = getXhr();
+            //创建请求
+            //发送一个请求，并传递参数，参数名称为name参数值为ding
+            var url='/02_request/?name='+$('#uname').val();
+            xhr.open('get',url,true);
+            //设置回调函数
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&xhr.status==200){
+                    $('#show').html(xhr.responseText);
+                }
+            }
+            //发送请求
+            xhr.send(null);
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="uname">
+    <button onclick="send_ajax()">发送异步请求(带参数)</button>
+    <div id='show'></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--ajax01/index/templates/06_json.html-->
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#" />
+    <script src='/static/js/jquery-1.11.3.js'></script>
+    <script src='/static/js/common.js'></script>
+    <script>
+        $(function(){
+            $("#send").click(function(){
+                var xhr = getXhr();
+                xhr.open("get",'/06_request/',true);
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4&xhr.status==200){
+                        var resText = xhr.responseText;
+                        var arr = jsonOjb = JSON.parse(resText);
+                        console.log(arr);
+                        $.each(arr,function(i,user){
+                            console.log("index:"+i);
+                            console.log("name:"+user.name);
+                            console.log("age:"+user.age);
+                        })
+                    }
+                }
+                xhr.send(null);
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="send">发送sjax请求</button>
+</body>
+</html>

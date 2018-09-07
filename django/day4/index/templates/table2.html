@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/table.css">
+</head>
+<body>
+    <!--
+    <table border="1px" width="500px" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>姓名</td>
+            <td>{{au.name}}</td>
+        </tr>
+        <tr>
+            <td>年龄</td>
+            <td>{{au.age}}</td>
+        </tr>
+        <tr>
+            <td>邮箱</td>
+            <td>{{au.email}}</td>
+        </tr>
+    </table>
+    <button>修改</button>-->
+    <form action="http://localhost:8000/19_update/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{au.id}}">
+        <p>
+            <input type="text" name="name" value="{{au.name}}">
+        </p>
+        <p>
+            <input type="text" name="age" value="{{au.age}}">
+        </p>
+        <p>
+            <input type="text" name="email" value="{{au.email}}">
+        </p>
+        <p>
+            <input type="submit" value="修改">
+        </p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h2>图书</h2>
+    <h3>书名{{book.title}}</h3>
+    <h2>作者</h2>
+    {% for au in authorList%}
+        <h3>{{au.name}}</h3>
+    {% endfor %}
+    <h1>反向查询</h1>
+    <h2>作者</h2>
+    <h3>{{author.name}}</h3>
+    <h2>作者</h2>
+    {% for book in bookList%}
+        <h3>{{book.title}}</h3>
+    {% endfor %}
+</body>
+</html>

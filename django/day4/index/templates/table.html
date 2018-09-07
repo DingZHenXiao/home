@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/table.css">
+</head>
+<body>
+    <table border="1px" width="500px" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>邮箱</td>
+            <td>操作</td>
+        </tr>
+        <tr>
+        {% for au in authors %}
+            <tr>
+                <td>{{au.name}}</td>
+                <td>{{au.age}}</td>
+                <td>{{au.email}}</td>
+                <td>
+                    <a href="{% url 'update' au.id %}">修改</a>
+                    <a href="{% url 'del' au.id %}">删除</a>
+                </td>
+            </tr>
+        {% endfor%}
+        </tr>
+    </table>
+</body>
+</html>

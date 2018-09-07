@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax01/index/templates/01_xmlhttp.html</title>
+    <script>
+        function btnCreate(){
+            var xhr = getXhr();
+            alert(xhr);
+        }
+        //创建XMLHttpRequest
+        function getXhr(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+            else{
+                return new ActiveXObject('Microsoft.XMLHTTP');
+            }
+        }
+        function send_ajax(){
+            //1.获取xhr对象
+            var xhr = getXhr();
+            //2.创建请求-open()
+            xhr.open('get','/01_request/',true);
+            //3.设置回调函数，监听readyState-onreadystatechange
+            xhr.onreadystatechange=function(){
+                //只有readyState为４并且status哦200的时候才能正确接收responseText
+                if(xhr.readyState==4&xhr.status==200){
+                    //xhr.responseText表示的是响应数据
+                    document.getElementById('show').innerHTML = xhr.responseText;
+                }
+            }
+            //4.发送请求-send()
+            xhr.send(null);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="send_ajax()">发送异步请求</button>
+    <div id='show'></div>
+</body>
+</html>

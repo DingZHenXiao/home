@@ -1,0 +1,57 @@
+  <ul style="list-style-type:none; width: 80%; margin: 0 auto;">
+    {% for blog in blogs %}
+    <li>
+      <table width="100%"; cellpadding="10px"; cellspacing="10px";>
+        <tr>
+          <td rowspan="4" width="20%" align="center">
+            <table>
+              <tr>
+                <td>
+                  <img
+                    {% if blog['avatar']%}
+                    src="{{blog['avatar']}}"
+                    {%else%}
+                    src="{{static_url('images/default_avatar.png')}}"
+                    {% end %}
+                    height="128px" width="128px">
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <p style="width: 100px;white-space: nowrap;
+                  overflow: hidden;text-overflow:ellipsis;">
+                    {{blog['author']}}
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            {{blog['title']}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>{{blog['subject']}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p style="min-height: 100px;">
+              {{blog['content']}}
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td align="right">
+            {% if blog['conmment'] == 0 %}
+            还没有评论，快来发表评论吧！
+            {% else %}
+            评论数：{{blog['conmment']}}
+            {% end %}
+          </td>
+        </tr>
+      </table>
+    </li>
+    {% end %}
+  </ul>

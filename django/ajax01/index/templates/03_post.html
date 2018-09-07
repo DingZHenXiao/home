@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--ajax01/index/templates/03_post.html-->
+    <style>
+        #show{
+            font-family: "黑体";
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    <script src='/static/js/jquery-1.11.3.js'></script>
+    <script src='/static/js/jquery.cookie.js'></script>
+    <script src='/static/js/common.js'></script>
+    <script>
+        function btnPost(){
+            //创建xhr
+            var xhr = getXhr();
+            //创建请求
+            xhr.open('post','/03_request/',true);
+            //设置回调函数
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4&xhr.status==200){
+                    $('#show').html(xhr.responseText);
+                }
+            }
+            //发送请求（带参数）
+            // xhr.setRequestHeader('Content-Type',"application/x-www-form-urlencoded");
+            // xhr.send('name='+$('#uname').val()+
+            // '&csrfmiddlewaretoken={{csrftoken}}');
+
+            xhr.setRequestHeader('Content-Type',"application/x-www-form-urlencoded");
+            xhr.send('name='+$('#uname').val()+'&csrfmiddlewaretoken='+$.cookie('csrftoken'));
+
+            // xhr.setRequestHeader('Content-Type',"application/x-www-form-urlencoded");
+            // xhr.send('name='+$('#uname').val()+'&csrfmiddlewaretoken='+
+            //     $("[name='csrfmiddlewaretoken']").val());
+        }
+    </script>
+    <!--application/x-www-form-urlencoded-->
+</head>
+<body>
+    <input type="text" name="" id="uname">
+    <button onclick="btnPost()">使用post提交数据</button>
+    <div id='show'></div>
+    <form>
+        {% csrf_token %}
+    </form>
+</body>
+</html>
